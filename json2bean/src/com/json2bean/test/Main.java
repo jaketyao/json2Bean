@@ -61,6 +61,17 @@ public class Main {
 	 	System.out.println(JsonFormat.format(s));
 	 	new Json2Bean(s, "RootBean", new MyNameGenerator(), new MyJsonParser(),new MyBeanGenerator("com.test4")).execute();
 	 	
+	 	s="[[[{\"name\":\"xm1\",\"age\":19},{\"name\":\"[xm2\",\"age\":19},{\"name\":\"{xm3\",\"age\":19}],[{\"name\":\"[[xm4\",\"age\":19},{\"name\":\"{{xm5\",\"age\":19}]],[[{\"name\":\"xm6\",\"age\":19},{\"name\":\"xm7\",\"age\":19}],[{\"name\":\"xm8\",\"age\":19}]]]";
+	 	System.out.println(JsonFormat.format(s));
+	 	new Json2Bean(s, "RootBean", new MyNameGenerator(), new MyJsonParser(),new MyBeanGenerator("com.test5")).execute();
+	 	
+	 	
+	 	
+	 	s="{\"multyList\":[[[{\"name\":\"xm1\",\"age\":19}]]]}";
+	 	System.out.println(JsonFormat.format(s));
+	 	new Json2Bean(s, "RootBean", new MyNameGenerator(), new MyJsonParser(),new MyBeanGenerator("com.test6")).execute();
+	 	
+	 	
 	 	
 	}
 
