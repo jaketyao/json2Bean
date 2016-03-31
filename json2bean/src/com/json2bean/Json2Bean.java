@@ -72,6 +72,8 @@ public class Json2Bean{
 				entry.setValue("Integer");
 			}else if (v instanceof BigDecimal) {
 				entry.setValue("Double");
+			}else if (v instanceof String) {
+				entry.setValue("String");
 			}else{
 				String childJson=v.toString();
 				if (childJson.startsWith("{")) {
@@ -112,6 +114,8 @@ public class Json2Bean{
 			return "List<Integer>" ;
 		}else if (v instanceof BigDecimal) {
 			return "List<Double>" ;
+		}else if (v instanceof String) {
+			return "List<String>" ;
 		}else{
 			String childJson=v.toString();
 			if (childJson.startsWith("{")) {

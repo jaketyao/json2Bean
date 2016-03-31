@@ -1,6 +1,7 @@
 package com.json2bean;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
@@ -9,10 +10,22 @@ import java.util.Set;
 
 public class MyBeanGenerator implements BeanGenerator {
 
-	
+	String packName;
+	public MyBeanGenerator(String packName) {
+		// TODO Auto-generated constructor stub
+		this.packName=packName;
+	}
+
 	@Override
 	public void writeBean(String className, Map<String, Object> map) throws IOException {
-		BufferedWriter bw=new BufferedWriter(new FileWriter("src/"+className+".java"));
+		File file=new File("src/"+packName.replace(".", "/"));
+		if (!file.exists()||file.exists()&&file.isFile()) {
+			file.mkdirs();
+		}
+		BufferedWriter bw=new BufferedWriter(new FileWriter(new File(file,  className+".java")));
+		bw.write("package ");
+		bw.write(packName);
+		bw.write(";\n");
 		bw.write("import java.util.List;\n\n");
 		
 		bw.write("/**\n");
@@ -79,6 +92,9 @@ public class MyBeanGenerator implements BeanGenerator {
 	}
 	@Override
 	public void writeList(String list) throws IOException {
+		
+	 
+		
 		BufferedWriter bw=new BufferedWriter(new FileWriter("src/"+list.replaceAll("<|>", "_")+".txt"));
 		
 		 bw.write(list);

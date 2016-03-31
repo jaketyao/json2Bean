@@ -1,3 +1,4 @@
+package com.test2;
 import java.util.List;
 
 /**
@@ -6,7 +7,7 @@ import java.util.List;
  *@author Young
  *
  */
-public class Start2{
+public class RootBean{
     Integer code;
     Data data;
     List<Integer> intList;

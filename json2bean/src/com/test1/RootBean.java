@@ -1,3 +1,4 @@
+package com.test1;
 import java.util.List;
 
 /**
@@ -6,7 +7,7 @@ import java.util.List;
  *@author Young
  *
  */
-public class Start1{
+public class RootBean{
     List<Integer> intList;
     Double count;
     List<Double> doubleList;
