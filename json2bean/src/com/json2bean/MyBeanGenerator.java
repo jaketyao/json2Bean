@@ -93,9 +93,12 @@ public class MyBeanGenerator implements BeanGenerator {
 	@Override
 	public void writeList(String list) throws IOException {
 		
-	 
+		File file=new File("src/"+packName.replace(".", "/"));
+		if (!file.exists()||file.exists()&&file.isFile()) {
+			file.mkdirs();
+		}
 		
-		BufferedWriter bw=new BufferedWriter(new FileWriter("src/"+list.replaceAll("<|>", "_")+".txt"));
+		BufferedWriter bw=new BufferedWriter(new FileWriter( new File(file,list.replaceAll("<|>", "_")+".txt")));
 		
 		 bw.write(list);
 		 bw.write(";");

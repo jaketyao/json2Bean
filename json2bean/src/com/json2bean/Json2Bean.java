@@ -64,7 +64,7 @@ public class Json2Bean{
 			Entry<String, Object> entry= itr.next();
 			String k=entry.getKey();
 			Object v=entry.getValue();
-			if (v==null) {
+			if (v==null||v.toString().equals("[]")) {
 				itr.remove();
 				continue;
 			}
