@@ -20,7 +20,7 @@ public class Main {
 
 
 	
-	public static void main(String[] args) throws IOException {
+	public  void main(String[] args) throws IOException {
 		
 		String ss="{\"count\":0.0,\"doubleList\":[1,2,3.0,4],\"intList\":[1,2,3,4,5,6]}";
 		System.out.println(ss);
