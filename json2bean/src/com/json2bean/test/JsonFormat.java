@@ -10,10 +10,11 @@ public class JsonFormat {
 	/**
 	 * 默认每次缩进两个空格
 	 */
-	private static final String empty="    ";
+	private static final String empty="  ";
 
 	public static String format(String json){
 		try {
+			json=removeUnUsedSpaces(json);
 			int empty=0;
 			char[]chs=json.toCharArray();
 			StringBuilder stringBuilder=new StringBuilder();
@@ -95,6 +96,43 @@ public class JsonFormat {
 	}
 
 
+	private static String removeUnUsedSpaces(String json){
+		char[]chs=json.toCharArray();
+		StringBuilder stringBuilder=new StringBuilder();
+		for (int i = 0; i < chs.length;) {
+			//若是双引号，则为字符串，下面if语句会处理该字符串
+			if (chs[i]=='\"') {
+				
+				stringBuilder.append(chs[i]);
+				i++;
+				//查找字符串结束位置
+				for ( ; i < chs.length;) {
+					//如果当前字符是双引号，且前面有连续的偶数个\，说明字符串结束
+					if ( chs[i]=='\"'&&isDoubleSerialBackslash(chs,i-1)) {
+						stringBuilder.append(chs[i]);
+						i++;
+						break;
+					} else{
+						stringBuilder.append(chs[i]);
+						i++;
+					}
+					
+				}	
+			}else{
+				
+				if (chs[i]==' '||chs[i]=='\t'||chs[i]=='\n') {
+					i++;
+					continue;
+				}
+				
+				stringBuilder.append(chs[i]);
+				i++;
+			}
+			
+		}
+		
+		return stringBuilder.toString();
+	}
 
 }
   
