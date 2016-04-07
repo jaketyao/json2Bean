@@ -7,7 +7,11 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -141,7 +145,7 @@ public class UI extends JFrame {
 					} 
 				} catch (Exception e1) {
 					Toolkit.getDefaultToolkit().beep();
-					JOptionPane.showMessageDialog(null, "fail", "", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, e1.getMessage(), "Fail", JOptionPane.INFORMATION_MESSAGE);
 
 					e1.printStackTrace();
 				}
